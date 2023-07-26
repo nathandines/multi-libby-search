@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Multi Libby Search</title>
+        <link href="assets/bootstrap/5.3.0-alpha2/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp">
+    </head>
+    <body>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <h1>Multi Libby Search</h1>
+                </div>
+            </div>
+            <form id="search-form">
+                <div class="mb-3">
+                    <label for="search-input" class="form-label">Search Query:</label>
+                    <input id="search-input" class="form-control" type="text" />
+                </div>
+                <div class="mb-3">
+                    <label for="library-key-input" class="form-label">Libraries (each line should correspond to a library identifier):</label>
+                    <textarea id="library-key-input" class="form-control" rows="4"></textarea>
+                </div>
+                <div class="row mb-3">
+                    <div class="col d-flex justify-content-center">
+                        <button id="search-button" class="btn btn-primary" type="submit" disabled>Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="assets/bootstrap/5.3.0-alpha2/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

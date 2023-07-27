@@ -23,7 +23,7 @@ function loadLibraries() {
 }
 
 function parseLibraries() {
-    return libraryKeyInput.value.split('\n');
+    return libraryKeyInput.value.split('\n').map(e => e.trim()).filter(e => e !== '');
 }
 
 function generateLibbyUrl(libraryKey, query) {

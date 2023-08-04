@@ -30,7 +30,7 @@
         <form id="search-form">
             <div class="mb-3">
                 <label for="search-input" class="form-label">Search Query:</label>
-                <input id="search-input" class="form-control" type="text" />
+                <input id="search-input" class="form-control" type="text" tabindex="1" autofocus />
             </div>
             <div class="mb-3">
                 <label for="library-key-input" class="form-label">Library Identifiers:</label>
@@ -41,11 +41,11 @@
                     </svg>
                     How do I find and use my library identifiers?
                 </a>
-                <textarea id="library-key-input" class="form-control" rows="4"></textarea>
+                <textarea id="library-key-input" class="form-control" rows="4" tabindex="2"></textarea>
             </div>
             <div class="row mb-3">
                 <div class="col d-flex justify-content-center">
-                    <button id="search-button" class="btn btn-primary" type="submit" disabled>Submit</button>
+                    <button id="search-button" class="btn btn-primary" type="submit" tabindex="3" disabled>Submit</button>
                 </div>
             </div>
         </form>

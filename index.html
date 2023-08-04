@@ -1,35 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>Multi Libby Search</title>
-        <link href="assets/bootstrap/5.3.0-alpha2/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp">
-    </head>
-    <body>
-        <div class="container py-5">
-            <div class="row">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Multi Libby Search</title>
+    <link href="assets/bootstrap/5.3.0-alpha2/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp">
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <h1>Multi Libby Search</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <a href="#how-to-modal" class="icon-link small" data-bs-toggle="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                    What is this? How do I use it?
+                </a>
+            </div>
+        </div>
+        <form id="search-form">
+            <div class="mb-3">
+                <label for="search-input" class="form-label">Search Query:</label>
+                <input id="search-input" class="form-control" type="text" />
+            </div>
+            <div class="mb-3">
+                <label for="library-key-input" class="form-label">Library Identifiers:</label>
+                <a href="#library-id-modal" class="icon-link small" data-bs-toggle="modal" style="margin-left: 0.5em;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-diamond" viewBox="0 0 16 16">
+                        <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>
+                        <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                    </svg>
+                    How do I find and use my library identifiers?
+                </a>
+                <textarea id="library-key-input" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="row mb-3">
                 <div class="col d-flex justify-content-center">
-                    <h1>Multi Libby Search</h1>
+                    <button id="search-button" class="btn btn-primary" type="submit" disabled>Submit</button>
                 </div>
             </div>
-            <form id="search-form">
-                <div class="mb-3">
-                    <label for="search-input" class="form-label">Search Query:</label>
-                    <input id="search-input" class="form-control" type="text" />
-                </div>
-                <div class="mb-3">
-                    <label for="library-key-input" class="form-label">Libraries (each line should correspond to a library identifier):</label>
-                    <textarea id="library-key-input" class="form-control" rows="4"></textarea>
-                </div>
-                <div class="row mb-3">
-                    <div class="col d-flex justify-content-center">
-                        <button id="search-button" class="btn btn-primary" type="submit" disabled>Submit</button>
+        </form>
+        <!-- How-to Modal-->
+        <div class="modal fade" id="how-to-modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h2 class="fs-4">What is this?</h2>
+                        <p>
+                            Libby only allows you to search a single active library at a time. It
+                            <i>can</i> show availability of books at your other libraries, but only
+                            if your active library has the same book in the first place.
+                        </p>
+                        <p>
+                            This tool allows you to specify all of the libraries which you'd like to
+                            search and perform a search of them simultaneously.
+                        </p>
+                        <h2 class="fs-4">How do I use it?</h2>
+                        <p>
+                        <ol>
+                            <li>Type your search query into the "Search Query" field.</li>
+                            <li>Populate your list of libraries in the "Library Identifiers" text box.</li>
+                            <li>
+                                Click "Submit" and your search will be submitted to all of your
+                                libraries across multiple browser tabs.
+                            </li>
+                        </ol>
+                        </p>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-        <script src="assets/bootstrap/5.3.0-alpha2/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"></script>
-        <script src="app.js"></script>
-    </body>
+    </div>
+    <!-- Library identifier modal -->
+    <div class="modal fade" id="library-id-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">How to find and use a library identifier from Libby</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>Navigate to <a href="https://libbyapp.com">Libby</a> in your browser and sign-in</li>
+                        <li>Once you're signed in, select a library for which you need the identifier</li>
+                        <li>
+                            On the homepage for the active library, the library identifier will be
+                            visible in the location bar (see the below example for the "City of
+                            Melbourne" library identifier, which is "melbournelib")
+                        </li>
+                        <img style="margin: 1em 1em; max-width: 65%;" class="img-fluid shadow rounded mx-auto d-block" src="assets/images/city_of_melbourne.png" alt="The &quot;City of Melbourne&quot; library identifier is &quot;melbournelib&quot;" />
+                        <li>Add the library identifier to its own line in the "Library Identifiers" field on the Multi Libby Search page.</li>
+                        <img style="margin: 1em 1em; max-width: 65%;" class="img-fluid shadow rounded mx-auto d-block" src="assets/images/library_identifiers.png" alt="Library Identifiers Textbox" />
+                        <li>Repeat for each library which you would like to search.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pop-up blocker modal -->
+    <div class="modal fade" id="pop-up-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pop-up blocker detected</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Please disable your pop-up blocker for this site.</p>
+                    <h5>How to unblock pop-ups for this site on Google Chrome:</h5>
+                    <p>
+                        <ol>
+                            <li>You should be able to see an icon in your location bar indicating "Pop-up blocked". Click that icon.</li>
+                            <li>Select the radio button "Always allow pop-ups and redirects from https://nathandines.github.io"</li>
+                            <li>Press the "Done" button</li>
+                            <li>Try your search again</li>
+                            <img style="margin: 1em 1em; max-width: 65%;" class="img-fluid shadow rounded mx-auto d-block" src="assets/images/pop-up_blocked.png" alt="Chrome Pop-up Blocked Dialogue" />
+                        </ol>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/5.3.0-alpha2/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"></script>
+    <script src="app.js"></script>
+</body>
+
 </html>

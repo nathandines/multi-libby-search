@@ -37,8 +37,15 @@ function submit(event) {
 
     let searchQuery = searchInput.value
     let libraryKeyArray = parseLibraries()
+    let newWindows =[]
     for (var i = 0; i < libraryKeyArray.length; i++) {
-        window.open(generateLibbyUrl(libraryKeyArray[i], searchQuery), '_blank')
+        newWindows.push(window.open(generateLibbyUrl(libraryKeyArray[i], searchQuery), '_blank'))
+    }
+    if (newWindows.some(win => isWindowClosed(win))) {
+        newWindows.forEach(win => {
+            isWindowClosed(win) || win.close();
+        });
+        (new bootstrap.Modal(document.getElementById('pop-up-modal'), {})).show()
     }
 }
 
@@ -46,6 +53,10 @@ function init() {
     loadLibraries()
     setButtonState()
     searchForm.onsubmit = submit
+}
+
+function isWindowClosed(win) {
+    return (!win || win.closed || typeof win.closed=='undefined');
 }
 
 window.onload = init;

@@ -10,8 +10,7 @@ function setButtonState() {
     searchButton.disabled = searchInput.value.length === 0 || libraryKeyInput.value.length === 0
 }
 
-function saveLibraries() {
-    let libArray = parseLibraries();
+function saveLibraries(libArray) {
     localStorage.setItem('libraries', JSON.stringify(libArray))
 }
 
@@ -33,11 +32,13 @@ function generateLibbyUrl(libraryKey, query) {
 
 function submit(event) {
     event.preventDefault();
-    saveLibraries()
 
     let searchQuery = searchInput.value
     let libraryKeyArray = parseLibraries()
     let newWindows =[]
+
+    saveLibraries(libraryKeyArray)
+
     for (var i = 0; i < libraryKeyArray.length; i++) {
         newWindows.push(window.open(generateLibbyUrl(libraryKeyArray[i], searchQuery), '_blank'))
     }
